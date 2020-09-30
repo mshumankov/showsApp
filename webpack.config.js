@@ -26,6 +26,7 @@ module.exports = {
   resolve: { extensions: [".ts", ".tsx", ".js"] },
   devServer: {
     contentBase: "./",
+    historyApiFallback: true,
     port: 5000,
   },
 };
