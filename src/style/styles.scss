@@ -1,11 +1,2 @@
-$bg-color: #333;
-$text-color: #fff;
-
-* {
-  background-color: $bg-color;
-  color: $text-color;
-
-  h1 {
-    color: rgb(23, 83, 143);
-  }
-}
+@import "reset";
+@import "typography";
