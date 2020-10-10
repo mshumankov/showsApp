@@ -1,12 +1,12 @@
-import { createContext } from "react";
-
-import React from "react";
+import React, { Fragment } from "react";
+import Navigation from "../navigation/navPage";
 
 const Background = (): JSX.Element => {
   return (
-    <section>
-      <div>Loading</div>
-    </section>
+    <Fragment>
+      <Navigation />
+      <section className="background-style main"></section>
+    </Fragment>
   );
 };
 

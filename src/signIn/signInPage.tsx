@@ -1,10 +1,17 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import Navigation from "../navigation/navPage";
 
 const SignIn = (): JSX.Element => {
   return (
-    <section>
-      <div>I am signIn</div>
-    </section>
+    <Fragment>
+      <Navigation />
+      <main className="main">
+        <section className="content">
+          <div>I am signIn</div>
+        </section>
+      </main>
+    </Fragment>
   );
 };
 
