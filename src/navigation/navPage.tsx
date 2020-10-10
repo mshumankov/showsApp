@@ -11,6 +11,12 @@ const Navigation = () => {
         <li>
           <Link to={"/signIn"}>Sign In</Link>
         </li>
+        <li>
+          <label className="switch">
+            <input type="checkbox" />
+            <span className="slider round"></span>
+          </label>
+        </li>
       </ul>
     </section>
   );
