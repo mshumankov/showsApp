@@ -1,7 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Store } from "../container/container";
+import helpers from "../helpers/helper";
 
-const Navigation = () => {
+const Navigation = (): JSX.Element => {
+  const { state, dispatch } = useContext(Store);
+
+  const changeMode = () => {
+    const value = localStorage.getItem("darkMode");
+
+    if (value === null) {
+      localStorage.setItem("darkMode", "true");
+      dispatch({
+        type: "CHANGE_MODE",
+        payload: true,
+      });
+    } else {
+      if (value === "true") {
+        localStorage.setItem("darkMode", "false");
+        dispatch({
+          type: "CHANGE_MODE",
+          payload: false,
+        });
+      } else {
+        localStorage.setItem("darkMode", "true");
+        dispatch({
+          type: "CHANGE_MODE",
+          payload: true,
+        });
+      }
+    }
+  };
+
+  const isChecked = () => {
+    return "fg";
+  };
+
+  console.log(state.darkMode);
   return (
     <section className="navigation">
       <ul>
@@ -13,7 +48,11 @@ const Navigation = () => {
         </li>
         <li>
           <label className="switch">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={state.darkMode ? true : false}
+              onChange={changeMode}
+            />
             <span className="slider round"></span>
           </label>
         </li>
