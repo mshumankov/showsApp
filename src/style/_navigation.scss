@@ -13,6 +13,7 @@
   li {
     list-style: none;
     margin: 1rem 0;
+    text-align: center;
   }
   a {
     text-decoration: none;
@@ -50,7 +51,7 @@
     transition: 0.4s;
   }
   input:checked + .slider {
-    background: $orange-color;
+    background: $specific-color;
   }
   input:checked + .slider:before {
     transform: translateX(26px);
@@ -61,5 +62,8 @@
 
   .slider.round:before {
     border-radius: 50%;
+  }
+  svg {
+    font-size: 2rem;
   }
 }

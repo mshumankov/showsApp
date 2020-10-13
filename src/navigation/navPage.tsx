@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Store } from "../container/container";
-import helpers from "../helpers/helper";
+import { FaTv, FaUserAstronaut } from "react-icons/fa";
 
 const Navigation = (): JSX.Element => {
   const { state, dispatch } = useContext(Store);
 
-  const changeMode = () => {
+  const changeMode = (): void => {
     const value = localStorage.getItem("darkMode");
 
     if (value === null) {
@@ -32,19 +32,18 @@ const Navigation = (): JSX.Element => {
     }
   };
 
-  const isChecked = () => {
-    return "fg";
-  };
-
-  console.log(state.darkMode);
   return (
     <section className="navigation">
       <ul>
         <li>
-          <Link to={"/"}>Shows</Link>
+          <Link to={"/"}>
+            <FaTv />
+          </Link>
         </li>
         <li>
-          <Link to={"/signIn"}>Sign In</Link>
+          <Link to={"/signIn"}>
+            <FaUserAstronaut />
+          </Link>
         </li>
         <li>
           <label className="switch">
