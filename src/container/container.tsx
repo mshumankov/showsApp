@@ -3,6 +3,8 @@ import helpers from "../helpers/helper";
 
 interface IState {
   darkMode: boolean;
+  showsAll: any[];
+  showsView: any[];
 }
 
 export interface IAction {
@@ -12,6 +14,8 @@ export interface IAction {
 
 const initialState: IState = {
   darkMode: helpers.toBoolean() || false,
+  showsAll: [],
+  showsView: [],
 };
 
 export const Store = React.createContext<IState | any>(initialState);
@@ -20,6 +24,18 @@ function reducer(state: IState, action: IAction): IState {
   switch (action.type) {
     case "CHANGE_MODE":
       return { ...state, darkMode: action.payload };
+    case "SHOWS_ALL":
+      return {
+        ...state,
+        showsAll: [...state.showsAll, ...action.payload[1]],
+        showsView: [...state.showsView, ...action.payload[0]],
+      };
+    case "SHOWS_NEW":
+      return {
+        ...state,
+        showsAll: action.payload[1],
+        showsView: [...state.showsView, ...action.payload[0]],
+      };
     default:
       return state;
   }
