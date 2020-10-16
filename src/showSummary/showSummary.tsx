@@ -3,10 +3,11 @@ import React from "react";
 const showSummary = (props): JSX.Element => {
   const { name, image } = props.showInfo;
   return (
-    <div>
+    <div className="showSummary-container">
+      <figure>
+        <img src={image.medium} alt={`Show ${name}`} />
+      </figure>
       <div>{name}</div>
-      <img src={image.medium} alt={`Show ${name}`} />
-      <div></div>
     </div>
   );
 };

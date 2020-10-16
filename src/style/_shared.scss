@@ -40,6 +40,8 @@ $font-color: var(--font-color);
   width: 90%;
   background: $specific-color;
   overflow-x: hidden;
+  position: absolute;
+  left: 10%;
 }
 
 .content {

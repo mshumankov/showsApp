@@ -39,7 +39,7 @@ const ShowsPage = (): JSX.Element => {
       <main className="main">
         <section className="content">
           <div>I am shows</div>
-          <div>{showList}</div>
+          <div className="show-list">{showList}</div>
           <div>
             <button onClick={addMoreShows}>Add Shows</button>
           </div>

@@ -1,0 +1,8 @@
+.show-list {
+  margin: 1rem;
+  display: grid;
+  grid-row-gap: 60px;
+  grid-column-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-auto-rows: 400px;
+}

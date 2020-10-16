@@ -1,6 +1,7 @@
 @use 'shared';
 
 .navigation {
+  position: fixed;
   display: flex;
   width: 10%;
   height: 100vh;

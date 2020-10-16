@@ -1,0 +1,49 @@
+.showSummary-container {
+  img {
+    width: 100%;
+    vertical-align: middle;
+  }
+  figure {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: opacity 0.6s ease;
+      opacity: 0;
+      background: $black-color;
+    }
+    &::after {
+      content: "More Info";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+      cursor: pointer;
+    }
+    &:hover:before {
+      opacity: 0.7;
+    }
+    &:hover:after {
+      opacity: 1;
+    }
+  }
+  div {
+    margin-top: 0.5rem;
+    transition: color 0.7s ease;
+    cursor: pointer;
+    &:hover {
+      color: rgb(138, 138, 138);
+    }
+  }
+}
