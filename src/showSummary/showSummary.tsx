@@ -5,7 +5,7 @@ const showSummary = (props): JSX.Element => {
   return (
     <div className="showSummary-container">
       <figure>
-        <img src={image.medium} alt={`Show ${name}`} />
+        <img src={image ? image.medium : ""} alt={`Show ${name}`} />
       </figure>
       <div>{name}</div>
     </div>

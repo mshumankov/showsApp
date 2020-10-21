@@ -5,6 +5,7 @@ interface IState {
   darkMode: boolean;
   showsAll: any[];
   showsView: any[];
+  page: number;
 }
 
 export interface IAction {
@@ -16,6 +17,7 @@ const initialState: IState = {
   darkMode: helpers.toBoolean() || false,
   showsAll: [],
   showsView: [],
+  page: 1,
 };
 
 export const Store = React.createContext<IState | any>(initialState);
@@ -30,11 +32,17 @@ function reducer(state: IState, action: IAction): IState {
         showsAll: [...state.showsAll, ...action.payload[1]],
         showsView: [...state.showsView, ...action.payload[0]],
       };
-    case "SHOWS_NEW":
+    case "SHOWS_VIEW_ADD":
       return {
         ...state,
         showsAll: action.payload[1],
         showsView: [...state.showsView, ...action.payload[0]],
+      };
+    case "SHOWS_All_ADD":
+      return {
+        ...state,
+        showsAll: [...state.showsAll, ...action.payload],
+        page: state.page + 1,
       };
     default:
       return state;

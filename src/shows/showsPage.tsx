@@ -9,7 +9,7 @@ const ShowsPage = (): JSX.Element => {
 
   useEffect(() => {
     if (state.showsView.length === 0) {
-      service.loadShows("0").then((data) => {
+      service.loadShows(0).then((data) => {
         dispatch({
           type: "SHOWS_ALL",
           payload: data,
@@ -22,10 +22,20 @@ const ShowsPage = (): JSX.Element => {
     const showsAll = [...state.showsAll];
     const showsNew = showsAll.splice(0, 30);
     const result = [showsNew, showsAll];
+    const page = state.page;
     dispatch({
-      type: "SHOWS_NEW",
+      type: "SHOWS_VIEW_ADD",
       payload: result,
     });
+
+    if (showsAll.length <= 30) {
+      service.loadShows(page).then((data) => {
+        dispatch({
+          type: "SHOWS_All_ADD",
+          payload: data,
+        });
+      });
+    }
   };
 
   console.log(state.showsAll);

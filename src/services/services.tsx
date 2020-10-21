@@ -5,9 +5,14 @@ const service = {
       `http://api.tvmaze.com/shows?page=${id ? `${id}` : "0"}`
     );
     const data = await res.json();
-    const viewShows = data.splice(0, 30);
-    const result = [viewShows, data];
-    return result;
+
+    if (id === 0) {
+      const viewShows = data.splice(0, 30);
+      const result = [viewShows, data];
+      return result;
+    } else {
+      return data;
+    }
   },
 };
 

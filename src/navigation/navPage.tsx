@@ -36,7 +36,6 @@ const Navigation = (): JSX.Element => {
   const scaleIcon = () => {
     return "scale";
   };
-  console.log(useLocation());
 
   return (
     <section className="navigation">
