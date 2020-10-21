@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Store } from "../container/container";
 import { FaTv, FaUserAstronaut } from "react-icons/fa";
 
 const Navigation = (): JSX.Element => {
   const { state, dispatch } = useContext(Store);
+  const location = useLocation().pathname;
 
   const changeMode = (): void => {
     const value = localStorage.getItem("darkMode");
@@ -32,18 +33,27 @@ const Navigation = (): JSX.Element => {
     }
   };
 
+  const scaleIcon = () => {
+    return "scale";
+  };
+  console.log(useLocation());
+
   return (
     <section className="navigation">
       <ul>
         <li>
-          <Link to={"/"}>
-            <FaTv />
-          </Link>
+          <div className={location === "/" ? scaleIcon() : ""}>
+            <Link to={"/"}>
+              <FaTv />
+            </Link>
+          </div>
         </li>
         <li>
-          <Link to={"/signIn"}>
-            <FaUserAstronaut />
-          </Link>
+          <div className={location === "/signIn" ? scaleIcon() : ""}>
+            <Link to={"/signIn"}>
+              <FaUserAstronaut />
+            </Link>
+          </div>
         </li>
         <li>
           <label className="switch">
