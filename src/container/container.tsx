@@ -1,17 +1,6 @@
 import React from "react";
 import helpers from "../helpers/helper";
-
-interface IState {
-  darkMode: boolean;
-  showsAll: any[];
-  showsView: any[];
-  page: number;
-}
-
-export interface IAction {
-  type: string;
-  payload: any;
-}
+import { IState, IAction } from "../interfaces/interfaces";
 
 const initialState: IState = {
   darkMode: helpers.toBoolean() || false,
