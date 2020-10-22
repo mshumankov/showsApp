@@ -1,6 +1,9 @@
 $black-color: rgb(15, 15, 15);
 $dark-black-color: rgb(37, 37, 38);
-$light-black-color: rgb(51, 51, 51);
+$light-button-color: rgb(219, 219, 219);
+$dark-button-color: rgb(65, 65, 65);
+$light-hover-color: rgb(185, 185, 185);
+$dark-hover-color: rgb(83, 83, 83);
 $white-color: #fff;
 $dark-font: #303030;
 $specific-color: linear-gradient(to right, #ff512f, #f09819);
@@ -8,14 +11,17 @@ $specific-color: linear-gradient(to right, #ff512f, #f09819);
 $base-color: var(--base-color);
 $menu-color: var(--menu-color);
 $font-color: var(--font-color);
+$button-color: var(--button-color);
+$hover-color: var(--hover-color);
 
 .light-view {
   --base-color: #{$white-color};
   --menu-color: #{$black-color};
   --font-color: #{$dark-font};
+  --button-color: #{$light-button-color};
+  --hover-color: #{$light-hover-color};
 
   color: $font-color;
-
   .content {
     background-color: $base-color;
   }
@@ -24,6 +30,8 @@ $font-color: var(--font-color);
   --base-color: #{$dark-black-color};
   --menu-color: #{$black-color};
   --font-color: #{$white-color};
+  --button-color: #{$dark-button-color};
+  --hover-color: #{$dark-hover-color};
 
   color: $font-color;
 
@@ -47,4 +55,11 @@ $font-color: var(--font-color);
 .content {
   animation: slideRight 0.6s cubic-bezier(0.5, 0.2, 0.2, 1.1);
   overflow-x: hidden;
+}
+
+hr {
+  background: $specific-color;
+  height: 5px;
+  border: none;
+  margin: 1rem auto;
 }

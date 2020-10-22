@@ -3,6 +3,7 @@ import Navigation from "../navigation/navPage";
 import { Store } from "../container/container";
 import service from "../services/services";
 import ShowSummary from "../showSummary/showSummary";
+import { FaAngleDown } from "react-icons/fa";
 
 const ShowsPage = (): JSX.Element => {
   const { state, dispatch } = useContext(Store);
@@ -47,11 +48,16 @@ const ShowsPage = (): JSX.Element => {
     <Fragment>
       <Navigation />
       <main className="main">
+        <header className="content show-header">
+          <h1>TV SHOWS</h1>
+          <hr />
+        </header>
         <section className="content">
-          <div>I am shows</div>
           <div className="show-list">{showList}</div>
-          <div>
-            <button onClick={addMoreShows}>Add Shows</button>
+          <div className="angle-down-btn">
+            <button onClick={addMoreShows}>
+              <FaAngleDown />
+            </button>
           </div>
         </section>
       </main>
