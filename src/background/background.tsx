@@ -5,7 +5,7 @@ const Background = (): JSX.Element => {
   return (
     <Fragment>
       <Navigation />
-      <section className="background-style main"></section>
+      <section className="main"></section>
     </Fragment>
   );
 };

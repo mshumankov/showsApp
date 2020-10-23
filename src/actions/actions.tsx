@@ -29,7 +29,7 @@ export const addMoreShows = (state: IState, dispatch: any) => {
   }
 };
 
-export const addShow = async (id, dispatch: any) => {
+export const addShow = async (id: string, dispatch: any) => {
   const show = await service.loadShow(id);
   dispatch({
     type: "SHOW_DETAILS",
