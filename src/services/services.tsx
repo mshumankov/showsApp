@@ -14,6 +14,11 @@ const service = {
       return data;
     }
   },
+  loadShow: async (id) => {
+    const res = await fetch(`http://api.tvmaze.com/shows/${id}?embed=cast`);
+    const data = await res.json();
+    return data;
+  },
 };
 
 export default service;

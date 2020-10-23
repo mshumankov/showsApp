@@ -7,6 +7,7 @@ const initialState: IState = {
   showsAll: [],
   showsView: [],
   page: 1,
+  showDetails: {},
 };
 
 export const Store = React.createContext<IState | any>(initialState);
@@ -32,6 +33,11 @@ function reducer(state: IState, action: IAction): IState {
         ...state,
         showsAll: [...state.showsAll, ...action.payload],
         page: state.page + 1,
+      };
+    case "SHOW_DETAILS":
+      return {
+        ...state,
+        showDetails: { ...action.payload },
       };
     default:
       return state;

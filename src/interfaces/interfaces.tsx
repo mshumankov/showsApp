@@ -3,6 +3,7 @@ export interface IState {
   showsAll: any[];
   showsView: any[];
   page: number;
+  showDetails: {};
 }
 
 export interface IAction {
