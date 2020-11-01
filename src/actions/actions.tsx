@@ -36,3 +36,11 @@ export const addShow = async (id: string, dispatch: any) => {
     payload: show,
   });
 };
+
+export const cleanState = async (state: string, dispatch: any) => {
+  if (state === "showDetails")
+    dispatch({
+      type: "CLEAN_SHOWDETAILS",
+      payload: {},
+    });
+};

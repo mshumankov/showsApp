@@ -1,0 +1,10 @@
+.actor-card {
+  display: flex;
+  flex-direction: row;
+  margin: 2rem 0.5rem 2rem 0.5rem;
+
+  .card-info {
+    padding: 1rem 0 0 1rem;
+    width: 15rem;
+  }
+}

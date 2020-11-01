@@ -39,6 +39,11 @@ function reducer(state: IState, action: IAction): IState {
         ...state,
         showDetails: { ...action.payload },
       };
+    case "CLEAN_SHOWDETAILS":
+      return {
+        ...state,
+        showDetails: { ...action.payload },
+      };
     default:
       return state;
   }
