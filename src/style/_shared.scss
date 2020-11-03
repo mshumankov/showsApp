@@ -50,7 +50,11 @@ $hover-color: var(--hover-color);
   overflow-x: hidden;
   position: absolute;
   left: 10%;
-  height: 100%;
+  @include mq("tablet-small", "max") {
+    width: 100%;
+    left: 0;
+    top: 4.5rem;
+  }
 }
 
 .content {

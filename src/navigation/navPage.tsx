@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Store } from "../container/container";
-import { FaTv, FaUserAstronaut } from "react-icons/fa";
+import { FaTv, FaUserAstronaut, FaEllipsisV } from "react-icons/fa";
 
 const Navigation = (): JSX.Element => {
   const { state, dispatch } = useContext(Store);
   const location = useLocation().pathname;
+  const [clicked, updateClicked] = useState(false);
 
   const changeMode = (): void => {
     const value = localStorage.getItem("darkMode");
@@ -33,39 +34,56 @@ const Navigation = (): JSX.Element => {
     }
   };
 
+  const changeMenu = () => {
+    if (clicked) {
+      updateClicked(false);
+    } else {
+      updateClicked(true);
+    }
+  };
+  console.log(clicked);
+
   const scaleIcon = () => {
     return "scale";
   };
 
   return (
-    <section className="navigation">
-      <ul>
-        <li>
-          <div className={location === "/" ? scaleIcon() : ""}>
-            <Link to={"/"}>
-              <FaTv />
-            </Link>
-          </div>
-        </li>
-        <li>
-          <div className={location === "/signIn" ? scaleIcon() : ""}>
-            <Link to={"/signIn"}>
-              <FaUserAstronaut />
-            </Link>
-          </div>
-        </li>
-        <li>
-          <label className="switch">
-            <input
-              type="checkbox"
-              checked={state.darkMode ? true : false}
-              onChange={changeMode}
-            />
-            <span className="slider round"></span>
-          </label>
-        </li>
-      </ul>
-    </section>
+    <Fragment>
+      <section className="nav-bar">
+        <h1>Gump</h1>
+        <div onClick={changeMenu}>
+          <FaEllipsisV />
+        </div>
+      </section>
+      <section className={`navigation ${clicked ? "show-navigation" : ""}`}>
+        <ul>
+          <li>
+            <div className={location === "/" ? scaleIcon() : ""}>
+              <Link to={"/"}>
+                <FaTv />
+              </Link>
+            </div>
+          </li>
+          <li>
+            <div className={location === "/signIn" ? scaleIcon() : ""}>
+              <Link to={"/signIn"}>
+                <FaUserAstronaut />
+              </Link>
+            </div>
+          </li>
+          <li>
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={state.darkMode ? true : false}
+                onChange={changeMode}
+              />
+              <span className="slider round"></span>
+            </label>
+          </li>
+        </ul>
+      </section>
+    </Fragment>
   );
 };
 

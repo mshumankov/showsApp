@@ -8,6 +8,11 @@
   justify-content: center;
   align-items: center;
   background-color: $menu-color;
+  transition: width 0.5s ease;
+  @include mq("tablet-small", "max") {
+    left: -10%;
+    width: 0;
+  }
   ul {
     padding: 0;
   }
@@ -30,8 +35,8 @@
   .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 30px;
+    width: 3rem;
+    height: 1.5rem;
   }
   .switch input {
     opacity: 0;
@@ -51,10 +56,10 @@
   .slider:before {
     position: absolute;
     content: "";
-    height: 23px;
-    width: 24px;
-    left: 5px;
-    bottom: 4px;
+    height: 1.1rem;
+    width: 1.1rem;
+    left: 0.3rem;
+    bottom: 0.2rem;
     background-color: white;
     transition: 0.4s;
   }
@@ -62,7 +67,7 @@
     background: $specific-color;
   }
   input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(1.3rem);
   }
   .slider.round {
     border-radius: 34px;
@@ -76,5 +81,32 @@
   }
   .scale {
     transform: scale(1.4);
+  }
+}
+
+@include mq("tablet-small", "max") {
+  .nav-bar {
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    background-color: $menu-color;
+    color: $white-color;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.5rem;
+
+    h1 {
+      padding-bottom: 0;
+    }
+    h1,
+    div {
+      padding: 0 2rem;
+    }
+  }
+  .show-navigation {
+    left: 0;
+    width: 20%;
+    z-index: 1;
   }
 }
