@@ -46,4 +46,14 @@
       color: rgb(138, 138, 138);
     }
   }
+  h5 {
+    padding: 0.5rem 0;
+    @include mq("tablet-middle", "max") {
+      font-size: 1.4rem;
+    }
+    @include mq("phone-wide", "max") {
+      font-size: 1.6rem;
+      padding: 1rem 0;
+    }
+  }
 }

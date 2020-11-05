@@ -12,7 +12,9 @@ const ShowSummary = (props): JSX.Element => {
         </figure>
       </Link>
       <Link to={`/show/:${id}`}>
-        <div>{name}</div>
+        <div>
+          <h5>{name}</h5>
+        </div>
       </Link>
     </div>
   );

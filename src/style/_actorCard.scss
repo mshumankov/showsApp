@@ -2,9 +2,15 @@
   display: flex;
   flex-direction: row;
   margin: 2rem 0.5rem 2rem 0.5rem;
+  @include mq("desktop", "max") {
+    flex-direction: column;
+  }
 
   .card-info {
     padding: 1rem 0 0 1rem;
     width: 15rem;
+    @include mq("desktop", "max") {
+      padding: 1rem 0 0 0;
+    }
   }
 }

@@ -56,70 +56,70 @@ const ShowDetails = (props): JSX.Element => {
                 <h1>{name}</h1>
               </header>
               <div dangerouslySetInnerHTML={{ __html: summary }}></div>
-              <ul>
-                {network ? (
-                  <li>
-                    <span>Web channel: </span>
-                    <p>{network.name}</p>
-                  </li>
-                ) : null}
-                {runtime ? (
-                  <li>
-                    <span>Runtime: </span>
-                    <p>{runtime}</p>
-                  </li>
-                ) : null}
-                {language ? (
-                  <li>
-                    <span>Language: </span>
-                    <p>{language}</p>
-                  </li>
-                ) : null}
-                {status ? (
-                  <li>
-                    <span>Status: </span>
-                    <p>{status}</p>
-                  </li>
-                ) : null}
-                {type ? (
-                  <li>
-                    <span>Show Type: </span>
-                    <p>{type}</p>
-                  </li>
-                ) : null}
-                {genres ? (
-                  <li>
-                    <span>Genres: </span>
-                    <p>{genres.join(", ")}</p>
-                  </li>
-                ) : null}
-                {premiered ? (
-                  <li>
-                    <span>Premiered: </span>
-                    <p>{premiered}</p>
-                  </li>
-                ) : null}
-                {officialSite ? (
-                  <li>
-                    <span>Official Site: </span>
-                    <p>{officialSite}</p>
-                  </li>
-                ) : null}
-                {network ? (
-                  <li>
-                    <span>Country: </span>
-                    <p>{network.country.name}</p>
-                  </li>
-                ) : null}
-                {schedule ? (
-                  <li>
-                    <span>Schedule: </span>
-                    {schedule.days ? <p>{schedule.days.join(", ")}</p> : null}
-                    {schedule.time ? <p>{schedule.time}</p> : null}
-                  </li>
-                ) : null}
-              </ul>
             </article>
+            <ul>
+              {network ? (
+                <li>
+                  <span>Web channel: </span>
+                  <p>{network.name}</p>
+                </li>
+              ) : null}
+              {runtime ? (
+                <li>
+                  <span>Runtime: </span>
+                  <p>{runtime}</p>
+                </li>
+              ) : null}
+              {language ? (
+                <li>
+                  <span>Language: </span>
+                  <p>{language}</p>
+                </li>
+              ) : null}
+              {status ? (
+                <li>
+                  <span>Status: </span>
+                  <p>{status}</p>
+                </li>
+              ) : null}
+              {type ? (
+                <li>
+                  <span>Show Type: </span>
+                  <p>{type}</p>
+                </li>
+              ) : null}
+              {genres ? (
+                <li>
+                  <span>Genres: </span>
+                  <p>{genres.join(", ")}</p>
+                </li>
+              ) : null}
+              {premiered ? (
+                <li>
+                  <span>Premiered: </span>
+                  <p>{premiered}</p>
+                </li>
+              ) : null}
+              {officialSite ? (
+                <li>
+                  <span>Official Site: </span>
+                  <p>{officialSite}</p>
+                </li>
+              ) : null}
+              {network ? (
+                <li>
+                  <span>Country: </span>
+                  <p>{network.country.name}</p>
+                </li>
+              ) : null}
+              {schedule ? (
+                <li>
+                  <span>Schedule: </span>
+                  {schedule.days ? <p>{schedule.days.join(", ")}</p> : null}
+                  {schedule.time ? <p>{schedule.time}</p> : null}
+                </li>
+              ) : null}
+            </ul>
             <figure>
               {image ? (
                 <img src={image.original} alt={name} />
