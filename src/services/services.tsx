@@ -19,6 +19,11 @@ const service = {
     const data = await res.json();
     return data;
   },
+  loadEpisodes: async (id: string) => {
+    const res = await fetch(`http://api.tvmaze.com/shows/${id}/episodes`);
+    const data = await res.json();
+    return data;
+  },
 };
 
 export default service;

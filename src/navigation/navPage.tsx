@@ -41,7 +41,6 @@ const Navigation = (): JSX.Element => {
       updateClicked(true);
     }
   };
-  console.log(clicked);
 
   const scaleIcon = () => {
     return "scale";

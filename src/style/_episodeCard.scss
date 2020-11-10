@@ -1,0 +1,34 @@
+.episode-card {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+
+  .episode-info {
+    margin-left: 1.5rem;
+  }
+
+  img {
+    width: 18rem;
+    height: 11rem;
+    object-fit: cover;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+  }
+  h5 {
+    padding-bottom: 0;
+  }
+
+  p {
+    padding-bottom: 0;
+    font-size: 0.8rem;
+  }
+
+  span {
+    border-left: 2px solid $font-color;
+    margin-left: 1rem;
+    padding-left: 1rem;
+  }
+}

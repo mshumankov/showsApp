@@ -1,16 +1,15 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import Navigation from "../navigation/navPage";
 import { Store } from "../container/container";
-import { addShow, cleanState } from "../actions/actions";
+import { addShow, cleanState, addEpisodes } from "../actions/actions";
 import ActorCard from "../actorCard/actorCard";
+import SeasonButton from "../seasonButton/seasonButtont";
+import Episode from "../episodeCard/episodeCard";
 import { FaDivide } from "react-icons/fa";
 
 const ShowDetails = (props): JSX.Element => {
   const { state, dispatch } = useContext(Store);
   const id = props.match.params.id;
-  state.showDetails._embedded
-    ? console.log(state.showDetails._embedded.cast)
-    : null;
 
   const {
     name,
@@ -30,6 +29,7 @@ const ShowDetails = (props): JSX.Element => {
 
   useEffect(() => {
     addShow(id, dispatch);
+    addEpisodes(id, dispatch);
 
     return () => {
       cleanState("showDetails", dispatch);
@@ -42,8 +42,18 @@ const ShowDetails = (props): JSX.Element => {
     castList = state.showDetails._embedded.cast.map((actor) => (
       <ActorCard actorInfo={actor} key={actor.character.id} />
     ));
-    console.log(castList);
   }
+
+  let seasonsButtons:
+    | undefined
+    | JSX.Element[] = state.episodesAllSeasons.map((season) => (
+    <SeasonButton season={season} key={season[0].season} />
+  ));
+
+  let episodes: undefined | JSX.Element = state.currentSeason.map((episode) => (
+    <Episode episodeData={episode} key={episode.number} />
+  ));
+  console.log(state.currentSeason);
 
   return (
     <Fragment>
@@ -132,6 +142,15 @@ const ShowDetails = (props): JSX.Element => {
           <section className="cast">
             <h2>Cast</h2>
             <div className="cast-list">{castList}</div>
+          </section>
+          <hr />
+          <section className="episodes">
+            <h2>Episodes</h2>
+            <div className="seasons">
+              <h3>Season</h3>
+              <div className="seasons-buttons">{seasonsButtons}</div>
+            </div>
+            <div className="episodes-list">{episodes}</div>
           </section>
         </section>
       </main>

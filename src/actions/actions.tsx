@@ -9,7 +9,7 @@ export const initialLoadShows = async (dispatch: any) => {
   });
 };
 
-export const addMoreShows = (state: IState, dispatch: any) => {
+export const addMoreShows = async (state: IState, dispatch: any) => {
   const showsAll = [...state.showsAll];
   const showsNew = showsAll.splice(0, 30);
   const result = [showsNew, showsAll];
@@ -20,11 +20,10 @@ export const addMoreShows = (state: IState, dispatch: any) => {
   });
 
   if (showsAll.length <= 30) {
-    service.loadShows(page).then((data) => {
-      dispatch({
-        type: "SHOWS_All_ADD",
-        payload: data,
-      });
+    const data = await service.loadShows(page);
+    dispatch({
+      type: "SHOWS_All_ADD",
+      payload: data,
     });
   }
 };
@@ -35,6 +34,43 @@ export const addShow = async (id: string, dispatch: any) => {
     type: "SHOW_DETAILS",
     payload: show,
   });
+};
+
+export const showEpisodes = async (season: object[], dispatch: any) => {
+  dispatch({
+    type: "SHOW_EPISODES",
+    payload: [...season],
+  });
+};
+
+export const addEpisodes = async (id: string, dispatch: any) => {
+  const episodesAll = await service.loadEpisodes(id);
+
+  let episodesBySeason = [];
+  let seasonNum: number = 1;
+
+  function addSeasons(): void {
+    const season = episodesAll.filter(
+      (episode) => episode.season === seasonNum
+    );
+
+    if (season.length > 0) {
+      episodesBySeason.push(season);
+      seasonNum++;
+      addSeasons();
+    }
+  }
+
+  if (episodesAll.length > 0) {
+    addSeasons();
+  }
+
+  dispatch({
+    type: "ADD_EPISODES",
+    payload: episodesBySeason,
+  });
+
+  showEpisodes(episodesBySeason[0], dispatch);
 };
 
 export const cleanState = async (state: string, dispatch: any) => {

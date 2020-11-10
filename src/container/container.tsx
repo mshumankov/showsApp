@@ -8,6 +8,8 @@ const initialState: IState = {
   showsView: [],
   page: 1,
   showDetails: {},
+  episodesAllSeasons: [],
+  currentSeason: [],
 };
 
 export const Store = React.createContext<IState | any>(initialState);
@@ -43,6 +45,16 @@ function reducer(state: IState, action: IAction): IState {
       return {
         ...state,
         showDetails: { ...action.payload },
+      };
+    case "ADD_EPISODES":
+      return {
+        ...state,
+        episodesAllSeasons: action.payload,
+      };
+    case "SHOW_EPISODES":
+      return {
+        ...state,
+        currentSeason: action.payload,
       };
     default:
       return state;

@@ -4,6 +4,8 @@ export interface IState {
   showsView: any[];
   page: number;
   showDetails: {};
+  episodesAllSeasons: [][];
+  currentSeason: object[];
 }
 
 export interface IAction {
