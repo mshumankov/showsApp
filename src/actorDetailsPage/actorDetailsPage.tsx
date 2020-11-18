@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import Navigation from "../navigation/navPage";
 import { Store } from "../container/container";
 import service from "../services/services";
+import ShowList from "../showsList/showList";
 
 const ActorDetails = (props) => {
   const id = props.match.params.id;
@@ -43,7 +44,9 @@ const ActorDetails = (props) => {
               </ul>
             </div>
           </section>
-          <section></section>
+          <section>
+            <ShowList showData={actorShows} />
+          </section>
         </section>
       </main>
     </Fragment>

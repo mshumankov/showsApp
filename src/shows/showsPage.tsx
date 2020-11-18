@@ -1,8 +1,7 @@
 import React, { Fragment, useEffect, useContext } from "react";
 import Navigation from "../navigation/navPage";
 import { Store } from "../container/container";
-import service from "../services/services";
-import ShowSummary from "../showSummary/showSummary";
+import ShowList from "../showsList/showList";
 import { FaAngleDown } from "react-icons/fa";
 import { initialLoadShows, addMoreShows } from "../actions/actions";
 
@@ -19,10 +18,7 @@ const ShowsPage = (): JSX.Element => {
     addMoreShows(state, dispatch);
   };
 
-  console.log(state.showsAll);
-  let showList: JSX.Element[] = state.showsView.map((show) => (
-    <ShowSummary showInfo={show} key={show.id} />
-  ));
+  console.log(state.showsView);
 
   return (
     <Fragment>
@@ -33,7 +29,7 @@ const ShowsPage = (): JSX.Element => {
           <hr />
         </header>
         <section className="content">
-          <div className="show-list">{showList}</div>
+          <ShowList showData={state.showsView} />
           <div className="angle-down-btn">
             <button onClick={addShows}>
               <FaAngleDown />

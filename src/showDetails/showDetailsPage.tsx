@@ -6,7 +6,6 @@ import ActorCard from "../actorCard/actorCard";
 import SeasonButton from "../seasonButton/seasonButtont";
 import Episode from "../episodeCard/episodeCard";
 import { FaDivide } from "react-icons/fa";
-
 const ShowDetails = (props): JSX.Element => {
   const { state, dispatch } = useContext(Store);
   const id = props.match.params.id;
