@@ -1,4 +1,3 @@
-import regeneratorRuntime from "regenerator-runtime";
 const service = {
   loadShows: async (id: number) => {
     const res = await fetch(
@@ -21,6 +20,13 @@ const service = {
   },
   loadEpisodes: async (id: string) => {
     const res = await fetch(`http://api.tvmaze.com/shows/${id}/episodes`);
+    const data = await res.json();
+    return data;
+  },
+  loadActorShows: async (id: number) => {
+    const res = await fetch(
+      `http://api.tvmaze.com/people/${id}/castcredits?embed=show`
+    );
     const data = await res.json();
     return data;
   },

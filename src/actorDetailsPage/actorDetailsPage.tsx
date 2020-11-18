@@ -1,0 +1,53 @@
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import Navigation from "../navigation/navPage";
+import { Store } from "../container/container";
+import service from "../services/services";
+
+const ActorDetails = (props) => {
+  const id = props.match.params.id;
+  const { state, dispatch } = useContext(Store);
+  const actorInfo = state.showDetails._embedded.cast.find(
+    (data) => data.person.id === Number(id)
+  );
+  const { image, name, gender, country, birthday } = actorInfo.person;
+  const [actorShows, getActorShows] = useState([]);
+
+  useEffect(() => {
+    service.loadActorShows(id).then((data) => {
+      const showsInfo = data.map((data) => data._embedded.show);
+      getActorShows(showsInfo);
+    });
+  }, []);
+  console.log(actorShows);
+
+  return (
+    <Fragment>
+      <Navigation />
+      <main className="main">
+        <header className="content">
+          <h1>{actorInfo.person.name}</h1>
+          <hr />
+        </header>
+        <section className="content">
+          <section>
+            <figure>
+              <img src={image.original} alt={name} />
+            </figure>
+            <div>
+              <h3>Person Info</h3>
+              <ul>
+                <li>Gender: {gender}</li>
+                <li>Age: {2020 - Number(birthday.split("-")[0])}</li>
+                <li>Birthday: {birthday}</li>
+                <li>Born in: {country.name}</li>
+              </ul>
+            </div>
+          </section>
+          <section></section>
+        </section>
+      </main>
+    </Fragment>
+  );
+};
+
+export default ActorDetails;

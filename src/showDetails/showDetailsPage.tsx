@@ -31,9 +31,9 @@ const ShowDetails = (props): JSX.Element => {
     addShow(id, dispatch);
     addEpisodes(id, dispatch);
 
-    return () => {
-      cleanState("showDetails", dispatch);
-    };
+    // return () => {
+    //   cleanState("showDetails", dispatch);
+    // };
   }, []);
 
   let castList: undefined | JSX.Element[];
