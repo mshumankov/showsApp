@@ -4,7 +4,7 @@ import { Store } from "../container/container";
 import service from "../services/services";
 import ShowList from "../showsList/showList";
 
-const ActorDetails = (props) => {
+const ActorDetails = (props): JSX.Element => {
   const id = props.match.params.id;
   const { state, dispatch } = useContext(Store);
   const actorInfo = state.showDetails._embedded.cast.find(
@@ -25,27 +25,31 @@ const ActorDetails = (props) => {
     <Fragment>
       <Navigation />
       <main className="main">
-        <header className="content">
+        <header className="content header-actor">
           <h1>{actorInfo.person.name}</h1>
           <hr />
         </header>
-        <section className="content">
-          <section>
+        <section className="content actor-details">
+          <section className="actor-data">
             <figure>
               <img src={image.original} alt={name} />
             </figure>
-            <div>
+            <article>
               <h3>Person Info</h3>
-              <ul>
+              <ul className="list-items">
                 <li>Gender: {gender}</li>
                 <li>Age: {2020 - Number(birthday.split("-")[0])}</li>
                 <li>Birthday: {birthday}</li>
                 <li>Born in: {country.name}</li>
               </ul>
-            </div>
+            </article>
           </section>
-          <section>
-            <ShowList showData={actorShows} />
+          <hr />
+          <section className="actor-shows">
+            <h2>Known For</h2>
+            <div>
+              <ShowList showData={actorShows} />
+            </div>
           </section>
         </section>
       </main>

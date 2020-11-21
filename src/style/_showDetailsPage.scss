@@ -39,26 +39,10 @@
       align-self: start;
       grid-row: 2 / 3;
       grid-column: 1 / 7;
-      padding: 0;
-      list-style: none;
       margin-top: 1rem;
       @include mq("desktop", "max") {
         grid-column: 1 / -1;
         grid-row: none;
-      }
-    }
-
-    li {
-      position: relative;
-      padding-left: 1.5rem;
-
-      &:before {
-        content: "•";
-        color: #d7d7d7;
-        font-size: 2rem;
-        position: absolute;
-        left: 0;
-        top: -0.8rem;
       }
     }
 
