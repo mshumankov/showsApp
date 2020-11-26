@@ -32,7 +32,7 @@ const ShowDetails = (props): JSX.Element => {
     addEpisodes(id, dispatch);
 
     // return () => {
-    //   cleanState("showDetails", dispatch);
+    //   cleanState("CLEAN_SHOWDETAILS", dispatch);
     // };
   }, []);
 

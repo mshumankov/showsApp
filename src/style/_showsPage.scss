@@ -1,8 +1,55 @@
 .show-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include mq("tablet-wide", "max") {
+    flex-direction: column;
+  }
+
   h1 {
     font-size: 5rem;
     font-weight: 100;
     padding: 1rem;
+  }
+
+  form {
+    margin-right: 2rem;
+    padding: 0.5rem 0.8rem;
+    border: 2px solid $font-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include mq("tablet-wide", "max") {
+      margin: 0 0 2rem 0;
+    }
+  }
+
+  input {
+    background: transparent;
+    border: none;
+    border-radius: 0px;
+    color: $font-color;
+    border-bottom: 2px solid transparent;
+    transition: border 0.3s ease;
+    width: 18rem;
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid $font-color;
+    }
+  }
+
+  button {
+    background: none;
+    border: none;
+    padding-top: 3px;
+    margin-right: 1rem;
+    outline: none;
+  }
+
+  svg {
+    font-size: 1.3rem;
+    background: none;
+    color: $font-color;
   }
 }
 .angle-down-btn {

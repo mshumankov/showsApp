@@ -10,6 +10,7 @@ const initialState: IState = {
   showDetails: {},
   episodesAllSeasons: [],
   currentSeason: [],
+  searchData: [],
 };
 
 export const Store = React.createContext<IState | any>(initialState);
@@ -46,6 +47,11 @@ function reducer(state: IState, action: IAction): IState {
         ...state,
         showDetails: { ...action.payload },
       };
+    case "CLEAN_SEARCHDATA":
+      return {
+        ...state,
+        searchData: [],
+      };
     case "ADD_EPISODES":
       return {
         ...state,
@@ -55,6 +61,11 @@ function reducer(state: IState, action: IAction): IState {
       return {
         ...state,
         currentSeason: action.payload,
+      };
+    case "SEARCH_RESULT":
+      return {
+        ...state,
+        searchData: action.payload,
       };
     default:
       return state;

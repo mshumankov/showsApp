@@ -6,6 +6,7 @@ export interface IState {
   showDetails: {};
   episodesAllSeasons: [][];
   currentSeason: object[];
+  searchData: object[];
 }
 
 export interface IAction {

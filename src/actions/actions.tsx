@@ -74,9 +74,17 @@ export const addEpisodes = async (id: string, dispatch: any) => {
 };
 
 export const cleanState = async (state: string, dispatch: any) => {
-  if (state === "showDetails")
-    dispatch({
-      type: "CLEAN_SHOWDETAILS",
-      payload: {},
-    });
+  dispatch({
+    type: state,
+    payload: {},
+  });
+};
+
+export const searchShows = async (keyword: string, dispatch: any) => {
+  const data = await service.loadSearchShows(keyword);
+  const dataShows = data.map((showScore) => showScore.show);
+  dispatch({
+    type: "SEARCH_RESULT",
+    payload: dataShows,
+  });
 };

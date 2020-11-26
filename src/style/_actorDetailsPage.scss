@@ -9,6 +9,7 @@
 
     img {
       max-height: 45rem;
+      max-width: 34rem;
       @include mq("tablet-wide", "max") {
         max-height: none;
         max-width: 100%;

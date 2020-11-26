@@ -30,6 +30,11 @@ const service = {
     const data = await res.json();
     return data;
   },
+  loadSearchShows: async (keyWord: string) => {
+    const res = await fetch(`http://api.tvmaze.com/search/shows?q=${keyWord}`);
+    const data = await res.json();
+    return data;
+  },
 };
 
 export default service;
