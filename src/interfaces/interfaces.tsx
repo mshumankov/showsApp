@@ -7,6 +7,7 @@ export interface IState {
   episodesAllSeasons: [][];
   currentSeason: object[];
   searchData: object[];
+  currentUser: null | any;
 }
 
 export interface IAction {

@@ -1,5 +1,6 @@
 import service from "../services/services";
 import { IState, IAction } from "../interfaces/interfaces";
+import fire from "../auth/fire";
 
 export const initialLoadShows = async (dispatch: any) => {
   const data = await service.loadShows(0);
@@ -87,4 +88,17 @@ export const searchShows = async (keyword: string, dispatch: any) => {
     type: "SEARCH_RESULT",
     payload: dataShows,
   });
+};
+
+export const setAuth = (dispatch: any) => {
+  function checkUser(currentUser) {
+    if (currentUser) {
+      dispatch({
+        type: "CURRENT_USER",
+        payload: currentUser,
+      });
+    }
+  }
+
+  fire.auth().onAuthStateChanged(checkUser);
 };

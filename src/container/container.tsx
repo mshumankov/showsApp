@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import helpers from "../helpers/helper";
 import { IState, IAction } from "../interfaces/interfaces";
+import { setAuth } from "../actions/actions";
 
 const initialState: IState = {
   darkMode: helpers.toBoolean() || false,
@@ -11,6 +12,7 @@ const initialState: IState = {
   episodesAllSeasons: [],
   currentSeason: [],
   searchData: [],
+  currentUser: null,
 };
 
 export const Store = React.createContext<IState | any>(initialState);
@@ -67,6 +69,11 @@ function reducer(state: IState, action: IAction): IState {
         ...state,
         searchData: action.payload,
       };
+    case "CURRENT_USER":
+      return {
+        ...state,
+        currentUser: action.payload,
+      };
     default:
       return state;
   }
@@ -74,6 +81,11 @@ function reducer(state: IState, action: IAction): IState {
 
 const Container = ({ children }: JSX.ElementChildrenAttribute): JSX.Element => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
+
+  useEffect(() => {
+    setAuth(dispatch);
+    console.log("test");
+  }, []);
   return (
     <Store.Provider value={{ state, dispatch }}>
       <div

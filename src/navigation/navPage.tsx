@@ -1,12 +1,23 @@
 import React, { useContext, Fragment, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { Store } from "../container/container";
-import { FaTv, FaUserAstronaut, FaEllipsisV } from "react-icons/fa";
+import { FaTv, FaUserAstronaut, FaEllipsisV, FaPowerOff } from "react-icons/fa";
+import fire from "../auth/fire";
 
 const Navigation = (): JSX.Element => {
   const { state, dispatch } = useContext(Store);
   const location = useLocation().pathname;
   const [clicked, updateClicked] = useState(false);
+  const history = useHistory();
+
+  const signOut = async () => {
+    try {
+      await fire.auth().signOut();
+      history.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const changeMode = (): void => {
     const value = localStorage.getItem("darkMode");
@@ -79,6 +90,11 @@ const Navigation = (): JSX.Element => {
               />
               <span className="slider round"></span>
             </label>
+          </li>
+          <li>
+            <button>
+              <FaPowerOff onClick={signOut} />
+            </button>
           </li>
         </ul>
       </section>

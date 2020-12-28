@@ -13,6 +13,7 @@ import {
 const ShowsPage = (): JSX.Element => {
   const { state, dispatch } = useContext(Store);
   const [searchValue, getSearchValue] = useState("");
+  console.log(state.currentUser);
 
   useEffect(() => {
     if (state.showsView.length === 0) {
@@ -34,8 +35,10 @@ const ShowsPage = (): JSX.Element => {
 
   const getSearchShow = (e) => {
     e.preventDefault();
-    cleanState("CLEAN_SEARCHDATA", dispatch);
-    searchShows(searchValue, dispatch);
+    if (searchValue) {
+      cleanState("CLEAN_SEARCHDATA", dispatch);
+      searchShows(searchValue, dispatch);
+    }
   };
 
   console.log(state.searchData);
@@ -53,7 +56,9 @@ const ShowsPage = (): JSX.Element => {
             <input type="text" onChange={inputValue} />
           </form>
         </header>
-        <hr />
+        <div className="content">
+          <hr />
+        </div>
         {state.searchData.length > 0 ? (
           <section className="content">
             <ShowList showData={state.searchData} />
