@@ -32,9 +32,7 @@ const runControlValidation = (name, value, setValue, setError) => {
     const verificationSimbolsLength = patternSymbolsLength.test(value);
 
     if (!verificationSimbolsLength) {
-      setError(
-        "Password is between 6 and 20 characters without special simbols"
-      );
+      setError("Password is at least 6 characters without special symbols");
     }
 
     if (
