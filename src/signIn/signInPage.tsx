@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from "react";
+import React, { Fragment, useState, useRef, useEffect } from "react";
 import Navigation from "../navigation/navPage";
 import fire from "../auth/fire";
 import useFormControl from "../customHook/formControl";
@@ -16,13 +16,17 @@ const SignIn = ({ history }): JSX.Element => {
 
   const viewError = () => {
     if (emailFormControl.error) {
-      return emailFormControl.error;
+      showErrorRes(emailFormControl.error);
     } else if (passwordFormControl.error) {
-      return passwordFormControl.error;
+      showErrorRes(passwordFormControl.error);
     } else {
-      return null;
+      showErrorRes(null);
     }
   };
+
+  useEffect(() => {
+    viewError();
+  }, [emailFormControl.error, passwordFormControl.error]);
 
   const submitHandlerSignIn = async () => {
     if (
@@ -72,16 +76,15 @@ const SignIn = ({ history }): JSX.Element => {
   const activeSignIn = (): void => {
     setSignIn(true);
     setSignUp(false);
-    emailSignUp.current.value = null;
-    passwordSignUp.current.value = null;
+    showErrorRes(null);
   };
 
   const activeSignUp = (): void => {
     setSignUp(true);
     setSignIn(false);
-    emailSignIn.current.value = null;
-    passwordSignIn.current.value = null;
+    showErrorRes(null);
   };
+
   return (
     <Fragment>
       <Navigation />
@@ -124,7 +127,7 @@ const SignIn = ({ history }): JSX.Element => {
                       onChange={passwordFormControl.changeHandler}
                     />
                   </div>
-                  <div className="error-message">{viewError()}</div>
+                  <div className="error-message">{errorRes}</div>
                   <div className="button-wrap">
                     <button
                       className="btn-form"
@@ -134,7 +137,6 @@ const SignIn = ({ history }): JSX.Element => {
                       <span>Sign In</span>
                     </button>
                   </div>
-                  <div className="error-message-res">{errorRes}</div>
                 </form>
               </article>
               <article>
@@ -158,7 +160,7 @@ const SignIn = ({ history }): JSX.Element => {
                       onChange={passwordFormControl.changeHandler}
                     />
                   </div>
-                  <div className="error-message">{viewError()}</div>
+                  <div className="error-message">{errorRes}</div>
                   <div className="button-wrap">
                     <button
                       className="btn-form"
