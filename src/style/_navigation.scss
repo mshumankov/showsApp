@@ -26,11 +26,16 @@
   }
   li div:hover {
     transform: scale(1.4);
-    opacity: 0.7;
   }
   a {
     text-decoration: none;
     color: $white-color;
+  }
+  button {
+    color: $white-color;
+    background: none;
+    border: none;
+    outline: none;
   }
   .switch {
     position: relative;

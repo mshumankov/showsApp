@@ -27,3 +27,8 @@ export interface IShow {
   status: string;
   summary: string;
 }
+
+export interface IFavourites {
+  shows: IShow[];
+  actors: object[];
+}

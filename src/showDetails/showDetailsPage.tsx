@@ -2,10 +2,11 @@ import React, { Fragment, useContext, useEffect } from "react";
 import Navigation from "../navigation/navPage";
 import { Store } from "../container/container";
 import { addShow, cleanState, addEpisodes } from "../actions/actions";
-import ActorCard from "../actorCard/actorCard";
+import ActorList from "../actorList/actorList";
 import SeasonButton from "../seasonButton/seasonButtont";
 import Episode from "../episodeCard/episodeCard";
-import { FaDivide } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+import favouritesHelpers from "../services/favouritesHelpers";
 
 const ShowDetails = (props): JSX.Element => {
   const { state, dispatch } = useContext(Store);
@@ -27,6 +28,8 @@ const ShowDetails = (props): JSX.Element => {
     rating,
   } = state.showDetails;
 
+  console.log(state.showDetails);
+
   useEffect(() => {
     addShow(id, dispatch);
     addEpisodes(id, dispatch);
@@ -36,13 +39,13 @@ const ShowDetails = (props): JSX.Element => {
     // };
   }, []);
 
-  let castList: undefined | JSX.Element[];
+  // let castList: undefined | JSX.Element[];
 
-  if (state.showDetails._embedded) {
-    castList = state.showDetails._embedded.cast.map((actor) => (
-      <ActorCard actorInfo={actor} key={actor.character.id} />
-    ));
-  }
+  // if (state.showDetails._embedded) {
+  //   castList = state.showDetails._embedded.cast.map((actor) => (
+  //     <ActorCard actorInfo={actor} key={actor.character.id} />
+  //   ));
+  // }
 
   let seasonsButtons:
     | undefined
@@ -53,7 +56,10 @@ const ShowDetails = (props): JSX.Element => {
   let episodes: undefined | JSX.Element = state.currentSeason.map((episode) => (
     <Episode episodeData={episode} key={episode.number} />
   ));
-  console.log(state.currentSeason);
+
+  const addFavouriteShow = (): void => {
+    favouritesHelpers.addFavouriteShow(state, state.showDetails);
+  };
 
   return (
     <Fragment>
@@ -66,6 +72,8 @@ const ShowDetails = (props): JSX.Element => {
                 <h1>{name}</h1>
               </header>
               <div dangerouslySetInnerHTML={{ __html: summary }}></div>
+              {rating ? <div>{rating.average}</div> : null}
+              <FaRegHeart onClick={addFavouriteShow} />
             </article>
             <ul className="list-items">
               {network ? (
@@ -141,7 +149,9 @@ const ShowDetails = (props): JSX.Element => {
           <hr />
           <section className="cast">
             <h2>Cast</h2>
-            <div className="cast-list">{castList}</div>
+            {state.showDetails._embedded ? (
+              <ActorList actorsData={state.showDetails._embedded.cast} />
+            ) : null}
           </section>
           <hr />
           <section className="episodes">

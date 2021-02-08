@@ -1,7 +1,13 @@
 import React, { useContext, Fragment, useState } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { Store } from "../container/container";
-import { FaTv, FaUserAstronaut, FaEllipsisV, FaPowerOff } from "react-icons/fa";
+import {
+  FaTv,
+  FaUserAstronaut,
+  FaEllipsisV,
+  FaPowerOff,
+  FaCrow,
+} from "react-icons/fa";
 import fire from "../auth/fire";
 
 const Navigation = (): JSX.Element => {
@@ -74,13 +80,33 @@ const Navigation = (): JSX.Element => {
               </Link>
             </div>
           </li>
-          <li>
-            <div className={location === "/signIn" ? scaleIcon() : ""}>
-              <Link to={"/signIn"}>
-                <FaUserAstronaut />
-              </Link>
-            </div>
-          </li>
+          {state.currentUser ? (
+            <li>
+              <div className={location === "/favourites" ? scaleIcon() : ""}>
+                <Link to={"/favourites"}>
+                  <FaCrow />
+                </Link>
+              </div>
+            </li>
+          ) : null}
+          {!state.currentUser ? (
+            <li>
+              <div className={location === "/signIn" ? scaleIcon() : ""}>
+                <Link to={"/signIn"}>
+                  <FaUserAstronaut />
+                </Link>
+              </div>
+            </li>
+          ) : null}
+          {state.currentUser ? (
+            <li>
+              <div>
+                <button>
+                  <FaPowerOff onClick={signOut} />
+                </button>
+              </div>
+            </li>
+          ) : null}
           <li>
             <label className="switch">
               <input
@@ -90,11 +116,6 @@ const Navigation = (): JSX.Element => {
               />
               <span className="slider round"></span>
             </label>
-          </li>
-          <li>
-            <button>
-              <FaPowerOff onClick={signOut} />
-            </button>
           </li>
         </ul>
       </section>

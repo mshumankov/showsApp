@@ -1,9 +1,19 @@
-import React, { Fragment, useState, useRef, useEffect } from "react";
+import React, {
+  Fragment,
+  useState,
+  useRef,
+  useEffect,
+  useContext,
+} from "react";
 import Navigation from "../navigation/navPage";
 import fire from "../auth/fire";
 import useFormControl from "../customHook/formControl";
+import service from "../services/services";
+import { setAuth } from "../actions/actions";
+import { Store } from "../container/container";
 
 const SignIn = ({ history }): JSX.Element => {
+  const { state, dispatch } = useContext(Store);
   const emailFormControl = useFormControl();
   const passwordFormControl = useFormControl();
   const [errorRes, showErrorRes] = useState("");
@@ -49,6 +59,7 @@ const SignIn = ({ history }): JSX.Element => {
         console.log(error.message);
       }
     }
+    viewError();
   };
 
   const submitHandlerSignUp = async () => {
@@ -71,6 +82,7 @@ const SignIn = ({ history }): JSX.Element => {
         console.log(error);
       }
     }
+    viewError();
   };
 
   const activeSignIn = (): void => {

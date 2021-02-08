@@ -84,7 +84,7 @@ const Container = ({ children }: JSX.ElementChildrenAttribute): JSX.Element => {
 
   useEffect(() => {
     setAuth(dispatch);
-    console.log("test");
+    console.log("cont", state.currentUser);
   }, []);
   return (
     <Store.Provider value={{ state, dispatch }}>

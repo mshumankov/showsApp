@@ -97,6 +97,13 @@ export const setAuth = (dispatch: any) => {
         type: "CURRENT_USER",
         payload: currentUser,
       });
+      console.log("user", currentUser);
+    } else {
+      dispatch({
+        type: "CURRENT_USER",
+        payload: null,
+      });
+      console.log("Nouser");
     }
   }
 
