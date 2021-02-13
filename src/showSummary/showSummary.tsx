@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
-import { FaRegHeart, FaTimes } from "react-icons/fa";
+import { FaRegHeart, FaTimes, FaRegStar } from "react-icons/fa";
 import { Store } from "../container/container";
 import favouritesHelpers from "../services/favouritesHelpers";
 
@@ -28,16 +28,27 @@ const ShowSummary = (props): JSX.Element => {
         </figure>
       </Link>
       <Link to={`/show/:${id}`}>
-        <div>
+        <div className="header-show">
           <h5>{name}</h5>
         </div>
       </Link>
-      {rating ? <div>{rating.average}</div> : null}
-      {location === "/favourites" ? (
-        <FaTimes onClick={removeFavouriteShow} />
-      ) : (
-        <FaRegHeart onClick={addFavouriteShow} />
-      )}
+      <div className="rating-wrap">
+        {rating.average ? (
+          <div className="rating">
+            <FaRegStar />
+            <div>{rating.average}</div>
+          </div>
+        ) : null}
+        {location === "/favourites" ? (
+          <div className="btn-favourite">
+            <FaTimes onClick={removeFavouriteShow} />
+          </div>
+        ) : (
+          <div className="btn-favourite">
+            <FaRegHeart onClick={addFavouriteShow} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

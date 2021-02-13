@@ -16,8 +16,10 @@ const Favourites = () => {
 
       service.getFavourites(uid).then((data) => {
         console.log(data);
-        getShows(data.shows);
-        getActors(data.actors);
+        if (data) {
+          data.shows ? getShows(data.shows) : null;
+          data.actors ? getActors(data.actors) : null;
+        }
       });
     }
   }, []);
@@ -26,7 +28,11 @@ const Favourites = () => {
     <Fragment>
       <Navigation />
       <main className="main fauvorites">
-        <section className="content">
+        <section
+          className={
+            actors.length > 0 || shows.length > 0 ? "content" : "content height"
+          }
+        >
           <section className="header-fav">
             <h2>FAVOURITES</h2>
           </section>

@@ -87,4 +87,12 @@
       color: white;
     }
   }
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn-favourite {
+    padding-bottom: 0.5rem;
+    font-size: 1.7rem;
+  }
 }

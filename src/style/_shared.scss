@@ -101,3 +101,22 @@ a {
     }
   }
 }
+
+.btn-favourite {
+  font-size: 25px;
+  cursor: pointer;
+
+  svg:hover {
+    fill: #ff512f;
+  }
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+
+  div {
+    padding-left: 0.3rem;
+  }
+}

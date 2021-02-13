@@ -39,12 +39,16 @@ const ActorCard = (props): JSX.Element => {
           <h3>{person.name}</h3>
         </Link>
         {location !== "/favourites" ? <p>as {character.name}</p> : null}
+        {location === "/favourites" ? (
+          <div className="btn-favourite">
+            <FaTimes onClick={removeFavouriteActor} />
+          </div>
+        ) : (
+          <div className="btn-favourite">
+            <FaRegHeart onClick={addFavouriteActor} />
+          </div>
+        )}
       </div>
-      {location === "/favourites" ? (
-        <FaTimes onClick={removeFavouriteActor} />
-      ) : (
-        <FaRegHeart onClick={addFavouriteActor} />
-      )}
     </div>
   );
 };

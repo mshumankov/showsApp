@@ -38,7 +38,7 @@
       opacity: 1;
     }
   }
-  div {
+  .header-show {
     margin-top: 0.5rem;
     transition: color 0.7s ease;
     cursor: pointer;
@@ -55,5 +55,11 @@
       font-size: 1.6rem;
       padding: 1rem 0;
     }
+  }
+  .rating-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 1rem;
   }
 }

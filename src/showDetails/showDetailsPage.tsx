@@ -5,12 +5,13 @@ import { addShow, cleanState, addEpisodes } from "../actions/actions";
 import ActorList from "../actorList/actorList";
 import SeasonButton from "../seasonButton/seasonButtont";
 import Episode from "../episodeCard/episodeCard";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaRegStar } from "react-icons/fa";
 import favouritesHelpers from "../services/favouritesHelpers";
 
 const ShowDetails = (props): JSX.Element => {
   const { state, dispatch } = useContext(Store);
   const id = props.match.params.id;
+  console.log(props.match.params.id);
 
   const {
     name,
@@ -70,10 +71,19 @@ const ShowDetails = (props): JSX.Element => {
             <article>
               <header>
                 <h1>{name}</h1>
+                {rating ? (
+                  rating.average ? (
+                    <div className="rating">
+                      <FaRegStar />
+                      <div>{rating.average}</div>
+                    </div>
+                  ) : null
+                ) : null}
               </header>
+              <div className="btn-favourite">
+                <FaRegHeart onClick={addFavouriteShow} />
+              </div>
               <div dangerouslySetInnerHTML={{ __html: summary }}></div>
-              {rating ? <div>{rating.average}</div> : null}
-              <FaRegHeart onClick={addFavouriteShow} />
             </article>
             <ul className="list-items">
               {network ? (

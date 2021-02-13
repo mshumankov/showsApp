@@ -9,26 +9,26 @@ const favouritesHelpers = {
       .getFavourites(uid)
       .then((data) => {
         console.log(data);
-        if (data.shows) {
-          console.log(data);
-          let dataFav: IFavourites = data;
-          let shows = dataFav.shows.filter(
-            (show: IShow) => show.id !== showInfo.id
-          );
-          shows.push(showInfo);
-          dataFav.shows = shows;
-          service.updateFavourites(uid, dataFav);
-        } else {
-          if (data) {
+        if (data) {
+          if (data.shows) {
+            console.log(data);
+            let dataFav: IFavourites = data;
+            let shows = dataFav.shows.filter(
+              (show: IShow) => show.id !== showInfo.id
+            );
+            shows.push(showInfo);
+            dataFav.shows = shows;
+            service.updateFavourites(uid, dataFav);
+          } else {
             const favourites = data;
             favourites.shows = [showInfo];
             service.createFavourites(uid, favourites);
-          } else {
-            const favourites = {
-              shows: [showInfo],
-            };
-            service.createFavourites(uid, favourites);
           }
+        } else {
+          const favourites = {
+            shows: [showInfo],
+          };
+          service.createFavourites(uid, favourites);
         }
       })
       .catch((error) => {
@@ -42,26 +42,26 @@ const favouritesHelpers = {
       .getFavourites(uid)
       .then((data) => {
         console.log(data);
-        if (data.actors) {
-          console.log(data);
-          let dataFav: IFavourites = data;
-          let actors = dataFav.actors.filter(
-            (actor) => actor.person.id !== actorInfo.person.id
-          );
-          actors.push(actorInfo);
-          dataFav.actors = actors;
-          service.updateFavourites(uid, dataFav);
-        } else {
-          if (data) {
+        if (data) {
+          if (data.actors) {
+            console.log(data);
+            let dataFav: IFavourites = data;
+            let actors = dataFav.actors.filter(
+              (actor) => actor.person.id !== actorInfo.person.id
+            );
+            actors.push(actorInfo);
+            dataFav.actors = actors;
+            service.updateFavourites(uid, dataFav);
+          } else {
             const favourites = data;
             favourites.actors = [actorInfo];
             service.createFavourites(uid, favourites);
-          } else {
-            const favourites = {
-              actors: [actorInfo],
-            };
-            service.createFavourites(uid, favourites);
           }
+        } else {
+          const favourites = {
+            actors: [actorInfo],
+          };
+          service.createFavourites(uid, favourites);
         }
       })
       .catch((error) => {
