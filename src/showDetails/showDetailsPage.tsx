@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import Navigation from "../navigation/navPage";
 import { Store } from "../container/container";
 import { addShow, cleanState, addEpisodes } from "../actions/actions";
@@ -11,6 +11,9 @@ import favouritesHelpers from "../services/favouritesHelpers";
 const ShowDetails = (props): JSX.Element => {
   const { state, dispatch } = useContext(Store);
   const id = props.match.params.id;
+  const [currentShowText, changeCurrentShowText] = useState("");
+  const [shortText, changeShortText] = useState(false);
+  const [noTagsShowText, changeNoTagsShowText] = useState("");
   console.log(props.match.params.id);
 
   const {
@@ -35,10 +38,23 @@ const ShowDetails = (props): JSX.Element => {
     addShow(id, dispatch);
     addEpisodes(id, dispatch);
 
-    // return () => {
-    //   cleanState("CLEAN_SHOWDETAILS", dispatch);
-    // };
+    return () => {
+      cleanState("CLEAN_SHOWDETAILS", dispatch);
+    };
   }, []);
+
+  useEffect(() => {
+    if (noTagsShowText) {
+      if (noTagsShowText.length > 1050) {
+        const shortText = noTagsShowText.substr(0, 1050);
+        changeCurrentShowText(shortText);
+        changeShortText(true);
+      } else {
+        changeCurrentShowText(noTagsShowText);
+      }
+      console.log(noTagsShowText.length);
+    }
+  }, [summary, noTagsShowText]);
 
   // let castList: undefined | JSX.Element[];
 
@@ -62,6 +78,18 @@ const ShowDetails = (props): JSX.Element => {
     favouritesHelpers.addFavouriteShow(state, state.showDetails);
   };
 
+  if (summary && !noTagsShowText) {
+    let shortText = summary.replace(/<\/?\w*\W*>/gm, "");
+    changeNoTagsShowText(shortText);
+    console.log(shortText);
+    console.log(noTagsShowText);
+  }
+
+  const moreText = () => {
+    changeCurrentShowText(noTagsShowText);
+    changeShortText(false);
+  };
+
   return (
     <Fragment>
       <Navigation />
@@ -83,7 +111,19 @@ const ShowDetails = (props): JSX.Element => {
               <div className="btn-favourite">
                 <FaRegHeart onClick={addFavouriteShow} />
               </div>
-              <div dangerouslySetInnerHTML={{ __html: summary }}></div>
+              {/* <div dangerouslySetInnerHTML={{ __html: summary }}></div> */}
+              <div>
+                {shortText ? (
+                  <div className="show-text">
+                    <p>{currentShowText}</p>
+                    <span onClick={moreText}>see more...</span>
+                  </div>
+                ) : (
+                  <div>
+                    <p>{currentShowText}</p>
+                  </div>
+                )}
+              </div>
             </article>
             <ul className="list-items">
               {network ? (

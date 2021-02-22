@@ -31,7 +31,7 @@ function reducer(state: IState, action: IAction): IState {
       return {
         ...state,
         showsAll: action.payload[1],
-        showsView: [...state.showsView, ...action.payload[0]],
+        showsView: action.payload[0],
       };
     case "SHOWS_All_ADD":
       return {

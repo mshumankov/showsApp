@@ -95,4 +95,14 @@
     padding-bottom: 0.5rem;
     font-size: 1.7rem;
   }
+  .show-text {
+    p {
+      display: inline;
+    }
+    span {
+      margin-left: 6px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
 }

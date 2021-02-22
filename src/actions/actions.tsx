@@ -12,9 +12,14 @@ export const initialLoadShows = async (dispatch: any) => {
 
 export const addMoreShows = async (state: IState, dispatch: any) => {
   const showsAll = [...state.showsAll];
+  const viewShows = state.showsView;
   const showsNew = showsAll.splice(0, 30);
-  const result = [showsNew, showsAll];
+  const currentShowsView = [...viewShows, ...showsNew];
+  const result = [currentShowsView, showsAll];
   const page = state.page;
+  console.log("hire");
+  console.log(result);
+
   dispatch({
     type: "SHOWS_VIEW_ADD",
     payload: result,
@@ -25,6 +30,17 @@ export const addMoreShows = async (state: IState, dispatch: any) => {
     dispatch({
       type: "SHOWS_All_ADD",
       payload: data,
+    });
+  }
+
+  if (viewShows.length >= 250) {
+    currentShowsView.splice(0, 30);
+    const newViewShows = [currentShowsView, showsAll];
+    console.log("cutShows");
+
+    dispatch({
+      type: "SHOWS_VIEW_ADD",
+      payload: newViewShows,
     });
   }
 };

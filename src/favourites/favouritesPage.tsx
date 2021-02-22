@@ -5,7 +5,7 @@ import service from "../services/services";
 import { Store } from "../container/container";
 import ActorList from "../actorList/actorList";
 
-const Favourites = () => {
+const Favourites = (): JSX.Element => {
   const { state } = useContext(Store);
   const [shows, getShows] = useState([]);
   const [actors, getActors] = useState([]);
