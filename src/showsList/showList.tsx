@@ -10,7 +10,6 @@ const ShowList = (props): JSX.Element => {
       <ShowSummary showInfo={show} key={show.id} />
     ));
   }
-  console.log(shows);
 
   return <div className="show-list">{showList}</div>;
 };

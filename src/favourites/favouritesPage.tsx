@@ -15,7 +15,6 @@ const Favourites = (): JSX.Element => {
       const uid = state.currentUser.uid;
 
       service.getFavourites(uid).then((data) => {
-        console.log(data);
         if (data) {
           data.shows ? getShows(data.shows) : null;
           data.actors ? getActors(data.actors) : null;
@@ -23,7 +22,7 @@ const Favourites = (): JSX.Element => {
       });
     }
   }, []);
-  console.log(actors);
+
   return (
     <Fragment>
       <Navigation />

@@ -102,13 +102,23 @@ a {
   }
 }
 
-.btn-favourite {
-  font-size: 25px;
+.btn-favourite-normal svg,
+.btn-favourite-big svg {
+  transition: transform 0.5s ease;
 
-  svg:hover {
+  &:hover {
+    transform: scale(1.4);
     fill: #ff512f;
     cursor: pointer;
   }
+}
+
+.btn-favourite-normal svg {
+  font-size: 25px;
+}
+
+.btn-favourite-big svg {
+  font-size: 1.7rem;
 }
 
 .rating {

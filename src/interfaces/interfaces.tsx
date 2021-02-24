@@ -28,7 +28,11 @@ export interface IShow {
   summary: string;
 }
 
+interface actor {
+  person: any;
+}
+
 export interface IFavourites {
   shows: IShow[];
-  actors: object[];
+  actors: actor[];
 }

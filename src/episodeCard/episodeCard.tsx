@@ -15,15 +15,12 @@ const Episode = (props) => {
       } else {
         changeCurrentEpisodeText(noTagsEpisodeText);
       }
-      console.log(noTagsEpisodeText.length);
     }
   }, [summary, noTagsEpisodeText]);
 
   if (summary && !noTagsEpisodeText) {
     let shortText = summary.replace(/<\/?\w*\W*>/gm, "");
     changeNoTagsEpisodeText(shortText);
-    console.log(shortText);
-    console.log(noTagsEpisodeText);
   }
 
   const moreText = () => {
@@ -34,22 +31,27 @@ const Episode = (props) => {
   return (
     <div className="episode-card">
       <figure>
-        <img src={image.original} alt={name} />
+        {image ? (
+          <img
+            src={image.original ? image.original : image.medium}
+            alt={name}
+          />
+        ) : null}
       </figure>
       <div className="episode-info">
         <div className="header">
           <h5>
             {number}. {name}
           </h5>
-          <span>{runtime}m</span>
-          <span>{airdate}</span>
+          <span className="main-info">{runtime}m</span>
+          <span className="main-info">{airdate}</span>
         </div>
         {/* <div dangerouslySetInnerHTML={{ __html: summary }}></div> */}
         <div>
           {shortText ? (
             <div className="show-text">
               <p>{currentEpisodeText}</p>
-              <span onClick={moreText}>see more...</span>
+              <span onClick={moreText}> see more...</span>
             </div>
           ) : (
             <div>

@@ -39,7 +39,11 @@ const ActorDetails = (props): JSX.Element => {
   }, []);
 
   const addFavouriteActor = (): void => {
-    favouritesHelpers.addFavouriteActor(state, actorInfo);
+    const actor = { person: null, character: null };
+    actor.person = actorInfo;
+    console.log("hire");
+    console.log(actor);
+    favouritesHelpers.addFavouriteActor(state, actor);
   };
 
   return (
@@ -78,7 +82,9 @@ const ActorDetails = (props): JSX.Element => {
                     <li>Born in: {actorInfo.country.name}</li>
                   ) : null}
                 </ul>
-                <FaRegHeart onClick={addFavouriteActor} />
+                <div className="btn-favourite-big">
+                  <FaRegHeart onClick={addFavouriteActor} />
+                </div>
               </article>
             ) : null}
           </section>

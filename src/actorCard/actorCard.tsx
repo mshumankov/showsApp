@@ -31,7 +31,10 @@ const ActorCard = (props): JSX.Element => {
     <div className="actor-card">
       <Link to={`/actor/${person.id}`}>
         <figure>
-          <img src={viewImage()} alt={character.name} />
+          <img
+            src={viewImage()}
+            alt={character ? character.name : person.name}
+          />
         </figure>
       </Link>
       <div className="card-info">
@@ -40,11 +43,11 @@ const ActorCard = (props): JSX.Element => {
         </Link>
         {location !== "/favourites" ? <p>as {character.name}</p> : null}
         {location === "/favourites" ? (
-          <div className="btn-favourite">
+          <div className="btn-favourite-normal">
             <FaTimes onClick={removeFavouriteActor} />
           </div>
         ) : (
-          <div className="btn-favourite">
+          <div className="btn-favourite-normal">
             <FaRegHeart onClick={addFavouriteActor} />
           </div>
         )}

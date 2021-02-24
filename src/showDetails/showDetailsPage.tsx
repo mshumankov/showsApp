@@ -14,7 +14,6 @@ const ShowDetails = (props): JSX.Element => {
   const [currentShowText, changeCurrentShowText] = useState("");
   const [shortText, changeShortText] = useState(false);
   const [noTagsShowText, changeNoTagsShowText] = useState("");
-  console.log(props.match.params.id);
 
   const {
     name,
@@ -31,8 +30,6 @@ const ShowDetails = (props): JSX.Element => {
     schedule,
     rating,
   } = state.showDetails;
-
-  console.log(state.showDetails);
 
   useEffect(() => {
     addShow(id, dispatch);
@@ -52,7 +49,6 @@ const ShowDetails = (props): JSX.Element => {
       } else {
         changeCurrentShowText(noTagsShowText);
       }
-      console.log(noTagsShowText.length);
     }
   }, [summary, noTagsShowText]);
 
@@ -81,8 +77,6 @@ const ShowDetails = (props): JSX.Element => {
   if (summary && !noTagsShowText) {
     let shortText = summary.replace(/<\/?\w*\W*>/gm, "");
     changeNoTagsShowText(shortText);
-    console.log(shortText);
-    console.log(noTagsShowText);
   }
 
   const moreText = () => {
@@ -108,7 +102,7 @@ const ShowDetails = (props): JSX.Element => {
                   ) : null
                 ) : null}
               </header>
-              <div className="btn-favourite">
+              <div className="btn-favourite-big">
                 <FaRegHeart onClick={addFavouriteShow} />
               </div>
               {/* <div dangerouslySetInnerHTML={{ __html: summary }}></div> */}
@@ -192,7 +186,7 @@ const ShowDetails = (props): JSX.Element => {
               {image ? (
                 <img src={image.original} alt={name} />
               ) : (
-                <div>No Image</div>
+                <div>Missing Image</div>
               )}
             </figure>
           </section>

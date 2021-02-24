@@ -8,10 +8,8 @@ const favouritesHelpers = {
     service
       .getFavourites(uid)
       .then((data) => {
-        console.log(data);
         if (data) {
           if (data.shows) {
-            console.log(data);
             let dataFav: IFavourites = data;
             let shows = dataFav.shows.filter(
               (show: IShow) => show.id !== showInfo.id
@@ -41,10 +39,8 @@ const favouritesHelpers = {
     service
       .getFavourites(uid)
       .then((data) => {
-        console.log(data);
         if (data) {
           if (data.actors) {
-            console.log(data);
             let dataFav: IFavourites = data;
             let actors = dataFav.actors.filter(
               (actor) => actor.person.id !== actorInfo.person.id

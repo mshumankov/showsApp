@@ -24,7 +24,14 @@ const ShowSummary = (props): JSX.Element => {
     <div className="showSummary-container">
       <Link to={`/show/${id}`}>
         <figure>
-          <img src={image ? image.medium : ""} alt={`Show ${name}`} />
+          {image ? (
+            <img
+              src={image.medium ? image.medium : image.original}
+              alt={`Show ${name}`}
+            />
+          ) : (
+            <div>Missing Image</div>
+          )}
         </figure>
       </Link>
       <Link to={`/show/:${id}`}>
@@ -40,11 +47,11 @@ const ShowSummary = (props): JSX.Element => {
           </div>
         ) : null}
         {location === "/favourites" ? (
-          <div className="btn-favourite">
+          <div className="btn-favourite-normal">
             <FaTimes onClick={removeFavouriteShow} />
           </div>
         ) : (
-          <div className="btn-favourite">
+          <div className="btn-favourite-normal">
             <FaRegHeart onClick={addFavouriteShow} />
           </div>
         )}

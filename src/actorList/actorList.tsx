@@ -7,10 +7,9 @@ const ActorList = (props): JSX.Element => {
 
   if (actors) {
     castList = actors.map((actor) => (
-      <ActorCard actorInfo={actor} key={actor.character.id} />
+      <ActorCard actorInfo={actor} key={actor.person.id} />
     ));
   }
-  console.log(actors);
 
   return <div className="cast-list">{castList}</div>;
 };

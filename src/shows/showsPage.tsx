@@ -13,7 +13,6 @@ import {
 const ShowsPage = (): JSX.Element => {
   const { state, dispatch } = useContext(Store);
   const [searchValue, getSearchValue] = useState("");
-  console.log(state.currentUser);
 
   useEffect(() => {
     if (state.showsView.length === 0) {
@@ -40,8 +39,6 @@ const ShowsPage = (): JSX.Element => {
       searchShows(searchValue, dispatch);
     }
   };
-
-  console.log(state.searchData);
 
   return (
     <Fragment>

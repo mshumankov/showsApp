@@ -17,8 +17,6 @@ export const addMoreShows = async (state: IState, dispatch: any) => {
   const currentShowsView = [...viewShows, ...showsNew];
   const result = [currentShowsView, showsAll];
   const page = state.page;
-  console.log("hire");
-  console.log(result);
 
   dispatch({
     type: "SHOWS_VIEW_ADD",
@@ -36,7 +34,6 @@ export const addMoreShows = async (state: IState, dispatch: any) => {
   if (viewShows.length >= 250) {
     currentShowsView.splice(0, 30);
     const newViewShows = [currentShowsView, showsAll];
-    console.log("cutShows");
 
     dispatch({
       type: "SHOWS_VIEW_ADD",
@@ -113,13 +110,11 @@ export const setAuth = (dispatch: any) => {
         type: "CURRENT_USER",
         payload: currentUser,
       });
-      console.log("user", currentUser);
     } else {
       dispatch({
         type: "CURRENT_USER",
         payload: null,
       });
-      console.log("Nouser");
     }
   }
 
