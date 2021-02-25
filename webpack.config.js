@@ -43,7 +43,7 @@ const rules = [
 
 module.exports = {
   target: "web",
-  mode: "development",
+  mode: "production",
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "build"),

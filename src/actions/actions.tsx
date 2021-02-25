@@ -1,5 +1,5 @@
 import service from "../services/services";
-import { IState, IAction } from "../interfaces/interfaces";
+import { IState } from "../interfaces/interfaces";
 import fire from "../auth/fire";
 
 export const initialLoadShows = async (dispatch: any) => {
