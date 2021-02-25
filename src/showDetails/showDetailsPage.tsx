@@ -177,7 +177,9 @@ const ShowDetails = (props): JSX.Element => {
               {schedule ? (
                 <li>
                   <span>Schedule: </span>
-                  {schedule.days ? <p>{schedule.days.join(", ")}</p> : null}
+                  {schedule.days ? (
+                    <p className="schedule">{schedule.days.join(", ")}</p>
+                  ) : null}
                   {schedule.time ? <p>{schedule.time}</p> : null}
                 </li>
               ) : null}
