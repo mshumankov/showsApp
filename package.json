@@ -1,11 +1,13 @@
 {
   "name": "gump",
   "version": "1.0.0",
+  "homepage": "https://mshumankov.github.io/",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "gh-pages -b master -d build"
   },
   "keywords": [],
   "author": "",
@@ -35,6 +37,7 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.12.0",
     "autoprefixer": "^10.2.4",
+    "gh-pages": "^3.1.0",
     "postcss-loader": "^5.0.0"
   },
   "browserslist": [
@@ -46,5 +49,3 @@
     "last 3 iOS versions"
   ]
 }
-
-
