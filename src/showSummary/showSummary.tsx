@@ -22,7 +22,7 @@ const ShowSummary = (props): JSX.Element => {
 
   return (
     <div className="showSummary-container">
-      <Link to={`/show/${id}`}>
+      <Link to={`/showsApp/show/${id}`}>
         <figure>
           {image ? (
             <img
@@ -34,7 +34,7 @@ const ShowSummary = (props): JSX.Element => {
           )}
         </figure>
       </Link>
-      <Link to={`/show/:${id}`}>
+      <Link to={`/showsApp/show/:${id}`}>
         <div className="header-show">
           <h5>{name}</h5>
         </div>
@@ -46,7 +46,7 @@ const ShowSummary = (props): JSX.Element => {
             <div>{rating.average}</div>
           </div>
         ) : null}
-        {location === "/favourites" ? (
+        {location === "/showsApp/favourites" ? (
           <div className="btn-favourite-normal">
             <FaTimes onClick={removeFavouriteShow} />
           </div>
