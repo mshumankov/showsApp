@@ -16,11 +16,11 @@ const ActorCard = (props): JSX.Element => {
 
   const removeFavouriteActor = (): void => {
     favouritesHelpers.removeFavouriteActor(state, props.actorInfo);
-    history.push("/showsApp/");
+    history.push("/");
   };
 
   const viewImage = () => {
-    if (location === "/showsApp/favourites") {
+    if (location === "/favourites") {
       return person.image ? person.image.medium : character.image.medium;
     } else {
       return character.image ? character.image.medium : person.image.medium;
@@ -29,7 +29,7 @@ const ActorCard = (props): JSX.Element => {
 
   return (
     <div className="actor-card">
-      <Link to={`/showsApp/actor/${person.id}`}>
+      <Link to={`/actor/${person.id}`}>
         <figure>
           <img
             src={viewImage()}
@@ -38,13 +38,11 @@ const ActorCard = (props): JSX.Element => {
         </figure>
       </Link>
       <div className="card-info">
-        <Link to={`/showsApp/actor/${person.id}`}>
+        <Link to={`/actor/${person.id}`}>
           <h3>{person.name}</h3>
         </Link>
-        {location !== "/showsApp/favourites" ? (
-          <p>as {character.name}</p>
-        ) : null}
-        {location === "/showsApp/favourites" ? (
+        {location !== "/favourites" ? <p>as {character.name}</p> : null}
+        {location === "/favourites" ? (
           <div className="btn-favourite-normal">
             <FaTimes onClick={removeFavouriteActor} />
           </div>

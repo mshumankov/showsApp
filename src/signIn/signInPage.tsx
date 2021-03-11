@@ -53,7 +53,7 @@ const SignIn = ({ history }): JSX.Element => {
             passwordFormControl.value
           );
 
-        history.push("/showsApp/");
+        history.push("/");
       } catch (error) {
         showErrorRes(error.message);
         console.log(error.message);
@@ -77,7 +77,7 @@ const SignIn = ({ history }): JSX.Element => {
             passwordFormControl.value
           );
 
-        history.push("/showsApp/");
+        history.push("/");
       } catch (error) {
         console.log(error);
       }

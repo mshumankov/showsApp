@@ -19,7 +19,7 @@ const Navigation = (): JSX.Element => {
   const signOut = async () => {
     try {
       await fire.auth().signOut();
-      history.push("/showsApp/");
+      history.push("/");
     } catch (error) {
       console.log(error);
     }
@@ -74,20 +74,16 @@ const Navigation = (): JSX.Element => {
       <section className={`navigation ${clicked ? "show-navigation" : ""}`}>
         <ul>
           <li>
-            <div className={location === "/showsApp/" ? scaleIcon() : ""}>
-              <Link to={"/showsApp/"}>
+            <div className={location === "/" ? scaleIcon() : ""}>
+              <Link to={"/"}>
                 <FaTv />
               </Link>
             </div>
           </li>
           {state.currentUser ? (
             <li>
-              <div
-                className={
-                  location === "/showsApp/favourites" ? scaleIcon() : ""
-                }
-              >
-                <Link to={"/showsApp/favourites"}>
+              <div className={location === "/favourites" ? scaleIcon() : ""}>
+                <Link to={"/favourites"}>
                   <FaCrow />
                 </Link>
               </div>
@@ -95,10 +91,8 @@ const Navigation = (): JSX.Element => {
           ) : null}
           {!state.currentUser ? (
             <li>
-              <div
-                className={location === "/showsApp/signIn" ? scaleIcon() : ""}
-              >
-                <Link to={"/showsApp/signIn"}>
+              <div className={location === "/signIn" ? scaleIcon() : ""}>
+                <Link to={"/signIn"}>
                   <FaUserAstronaut />
                 </Link>
               </div>

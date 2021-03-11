@@ -17,11 +17,11 @@ const App = (): JSX.Element => {
       <Router>
         <Switch>
           <Suspense fallback={<Background />}>
-            <Route path="/showsApp/" exact component={Shows} />
-            <Route path="/showsApp/signIn" exact component={SignIn} />
-            <Route path="/showsApp/show/:id" exact component={ShowDetails} />
-            <Route path="/showsApp/actor/:id" exact component={ActorDetails} />
-            <Route path="/showsApp/favourites" exact component={Favourites} />
+            <Route path="/" exact component={Shows} />
+            <Route path="/signIn" exact component={SignIn} />
+            <Route path="/show/:id" exact component={ShowDetails} />
+            <Route path="/actor/:id" exact component={ActorDetails} />
+            <Route path="/favourites" exact component={Favourites} />
           </Suspense>
         </Switch>
       </Router>
